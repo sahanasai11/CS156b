@@ -37,7 +37,9 @@
 module load python3-3.8.5
 
 # Setup a python enviroment 
-# CHANGE TO WHOEVER IS RUNNING THE SCRIPT
-source /home/hsiaveli/vens/cs156b/bin/activate
+source /home/hsiaveli/venus/cs156b/bin/activate
 
 # Anything else
+
+
+

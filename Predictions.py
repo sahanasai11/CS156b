@@ -16,6 +16,7 @@ import numpy as np
 from numpy import asarray
 import PIL
 from PIL import Image
+import np_utils # pip install np-utils
 
 import cv2
 
@@ -23,6 +24,28 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Flatten, Dense, Dropout, BatchNormalization, MaxPooling2D, Conv2D
+
+
+def load_data(Train_df,idx,
+              batch_size):
+    df = pd.read_csv(
+                  Train_df, skiprows=idx*batch_size,
+                  nrows=batch_size)
+    x = df.iloc[:,1:]
+         
+    y = df.iloc[:,0]
+    return (np.array(x), np_utils.to_categorical(y))
+
+
+def batch_generator(Train_df,batch_size,
+                    steps):
+    idx=1
+    while True: 
+        yield load_data(Train_df,idx-1,batch_size)## Yields data
+        if idx<steps:
+            idx+=1
+        else:
+            idx=1
 
 
 # In[3]:
