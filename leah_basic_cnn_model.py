@@ -1,4 +1,5 @@
 # made it easier to change between subset data and whole data, reorganized
+# NOTE: still includes scaling and doesn't have the "No Finding" fix
 import pandas as pd
 import numpy as np
 from numpy import asarray
