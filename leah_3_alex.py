@@ -1,3 +1,5 @@
+# 3 modl classifire using alexnet for all classifications
+# classifications: suupport devices, cardio, other
 import pandas as pd
 import numpy as np
 from numpy import asarray
