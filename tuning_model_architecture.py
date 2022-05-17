@@ -1,4 +1,3 @@
-import xxlimited
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -225,7 +224,7 @@ xx_val = X_train[-100000:]
 yy_val = y_train[-100000:]
 
 
-tuner = set_up_tuner('val_accuracy', 3, 2,  True, 'CS156b', 'tuner_creation')
+tuner = set_up_tuner('val_accuracy', 3, 2,  True, '/home/hsiaveli/ondemand/data/sys/dashboard/batch_connect/sys/jupyterlab/output', 'tuner_creation')
 # implementing the hyperparameters 
 # tuning class 
 run_tuner(tuner, X_train, y_train, 10, xx_train, yy_train, xx_val, yy_val)
