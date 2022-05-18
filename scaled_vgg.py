@@ -52,6 +52,8 @@ print('uploading data...')
 train_loaded = np.loadtxt(TRAIN_PATH + 'train_matrices')
 num_train = int(train_loaded.size / (width * height))
 train = train_loaded.reshape(num_train, (width*height) // width, width)
+# convert data from grayscale to rgb
+train = np.repeat(train[..., np.newaxis], 3, -1)
 
 print('train images loaded: ', len(train))
 
@@ -64,6 +66,8 @@ print('train labels loaded: ', len(train_label))
 test_loaded = np.loadtxt(TEST_PATH + 'test_matrices') # NOTE: 224 is added
 num_test = int(test_loaded.size / (width * height))
 test = test_loaded.reshape(num_test, (width*height) // width, width)
+# convert data from grayscale to rgb
+test = np.repeat(test[..., np.newaxis], 3, -1)
 
 print('test images loaded: ', len(test))
 
@@ -75,9 +79,12 @@ print('test id loaded:', len(test_img_id))
 #solution_loaded = np.loadtxt(TEST_PATH + 'solution_matrices')
 #num_solution = int(solution_loaded.size / (width * height))
 #solution = solution_loaded.reshape(num_solution, (width*height) // width, width)
+#solution = np.repeat(solution[..., np.newaxis], 3, -1)
+
 #print('solution images loaded: ', len(solution))
 
 #solution_img_id = np.loadtxt(TEST_PATH + 'solution_img_ids')
+
 #print('solution id loaded: ', len(solution_img_id))
 
 
