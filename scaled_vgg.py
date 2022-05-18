@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[ ]:
-
-
 import pandas as pd
 import numpy as np
 from numpy import asarray
@@ -11,13 +5,16 @@ import PIL
 from PIL import Image
 import matplotlib.pyplot as plt
 
+# import np_utils # pip install np-utils
+
 import cv2
+import copy
 
 import tensorflow as tf
 from tensorflow import keras
 from keras.models import Sequential
-from keras.layers import Flatten, Dense, Dropout, BatchNormalization, MaxPooling2D, Conv2D
-
+from keras import Model
+from keras.layers import Flatten, Dense, Dropout, BatchNormalization, MaxPooling2D, Conv2D, Input, MaxPool2D, AveragePooling2D, GlobalAveragePooling2D
 # -----------------------------------------------------------------------
 # DATA UPLOAD
 # -----------------------------------------------------------------------  
@@ -243,4 +240,3 @@ plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.savefig('model_loss_other.png')
 plt.show()
-
