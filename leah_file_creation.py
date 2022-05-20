@@ -19,7 +19,7 @@ train.head()
 # For subset data use: 
 UPLOAD_PATH = '/central/groups/CS156b/teams/clnsh/subset_compressed_data/subset_'
 
-
+init_path = '/groups/CS156b/data/'
 # Total number of train and test points
 MAX_TRAIN = 178158
 MAX_TEST = 22596
