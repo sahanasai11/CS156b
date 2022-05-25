@@ -269,7 +269,7 @@ model_no_finding.compile(
     optimizer=tf.optimizers.SGD(learning_rate=0.01),
     metrics=['mean_squared_error'])
     
-history_model_no_finding = model_model_no_finding.fit(train_tensor_of_tensors, y_train_model_no_finding, validation_split = 0.2, epochs=num_epoch, verbose=1, batch_size=num_batch)
+history_model_no_finding = model_no_finding.fit(train_tensor_of_tensors, y_train_model_no_finding, validation_split = 0.2, epochs=num_epoch, verbose=1, batch_size=num_batch)
 
 preds_no_finding = model_no_finding.predict(test_tensor_of_tensors)
 preds_no_finding= preds_no_finding.tolist()
