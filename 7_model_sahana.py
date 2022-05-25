@@ -1,3 +1,4 @@
+
 # coding: utf-8
 
 # In[1]:
@@ -213,7 +214,7 @@ print('test tensors of tensors created:', test_tensor_of_tensors.shape)
 
 
 # -----------------------------------------------------------------------
-# Pneumothorax
+# VGG: Pneumothorax
 # -----------------------------------------------------------------------
 
 X_train = np.repeat(X_train[..., np.newaxis], 3, -1)
@@ -291,7 +292,7 @@ model_pneumothorax.compile(
     optimizer=tf.optimizers.SGD(learning_rate=0.01),
     metrics=['mean_squared_error'])
     
-history_pneumothorax = model_pneumothorax.fit(train_tensor_of_tensors2, y_train_scaled, epochs=num_epoch, verbose=1, batch_size=num_batch)
+history_pneumothorax = model_pneumothorax.fit(train_tensor_of_tensors2, y_train_pneumothorax, validation_split = 0.2, epochs=num_epoch, verbose=1, batch_size=num_batch)
 
 preds_pneumothorax = model_pneumothorax.predict(test_tensor_of_tensors2)
 preds_pneumothorax = preds_pneumothorax.tolist()
@@ -600,31 +601,33 @@ np.savetxt("scaled.csv", combined_scaled, delimiter=",", fmt='%f', header = id_h
 # LOSS PLOTTING
 # -----------------------------------------------------------------------
 
-plt.subplot(7, 2, 1)
+plt.plot(history_pneumothorax.history['loss'])
+plt.plot(history_pneumothorax.history['val_loss'])
+plt.title('pneumothorax model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.savefig('pneumothorax_model_loss.png')
+plt.show()
+
 plt.plot(history_support.history['loss'])
 plt.plot(history_support.history['val_loss'])
 plt.title('support devices model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
+plt.savefig('support_model_loss.png')
+plt.show()
 
-plt.subplot(7, 2, 2)
 plt.plot(history_cardio.history['loss'])
 plt.plot(history_cardio.history['val_loss'])
 plt.title('cardio model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
+plt.savefig('cardio_model_loss.png')
+plt.show()
 
-plt.subplot(7, 2, 3)
-plt.plot(history_pneumothorax.history['loss'])
-# plt.plot(history_pneumothorax.history['val_loss'])
-plt.title('pneumothorax model loss')
-plt.ylabel('loss')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper left')
-
-plt.subplot(7, 2, 4)
 plt.plot(history_p.history['loss'])
 plt.plot(history_p.history['val_loss'])
 plt.title('p model loss')
@@ -632,30 +635,32 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.savefig('p_model_loss.png')
+plt.show()
 
-plt.subplot(7, 2, 5)
 plt.plot(history_frac.history['loss'])
 plt.plot(history_frac.history['val_loss'])
 plt.title('fracture model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
+plt.savefig('fracture_model_loss.png')
+plt.show()
 
-plt.subplot(7, 2, 6)
 plt.plot(history_nofinding.history['loss'])
 plt.plot(history_nofinding.history['val_loss'])
 plt.title('no finding model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
+plt.savefig('no_finding_model_loss.png')
+plt.show()
 
-plt.subplot(7, 2, 7)
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
 plt.title('other classification model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-
+plt.savefig('other_model_loss.png')
 plt.show()
-plt.savefig('model_losses.png')
+
