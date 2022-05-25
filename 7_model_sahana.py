@@ -618,7 +618,7 @@ plt.legend(['train', 'test'], loc='upper left')
 
 plt.subplot(7, 2, 3)
 plt.plot(history_pneumothorax.history['loss'])
-plt.plot(history_pneumothorax.history['val_loss'])
+# plt.plot(history_pneumothorax.history['val_loss'])
 plt.title('pneumothorax model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
